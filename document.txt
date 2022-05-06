@@ -1,0 +1,66 @@
+setTimeout(() => {
+    console.log(`hello word`);
+}, 5000); // Sau 5000 mini Giây thì nó sẽ thực thi câu lệnh.
+
+SetInterval(()=>{
+    console.log(`hello word`)
+}, 1000); // Sau 1000 mili giây thì nó sẽ thực hiện lại câu lệnh đó. Đến khi nào stop chương trình thì thôi
+
+#################################################
+// Việc thay thuộc tính kế thừa và thuộc tính bao đóng trong node JS cụ thể sẽ như sau.
+const nameVariable = require('./fileName')  ~~~~ Đây là câu lệnh tương dương với lệnh import.
+Cho phép truy cập vào tài nguyên của 1 file nào đó
+*************************************************
+Ở trong file được import vào
+module.exports {variableNames/functionName....(Những cái gì được cấp quyền share ra ngoài thì nhét nó vào đây)}.
+==> {
+        Thằng khác muốn xài thì phải khai báo var/let/const variableNames = require('./fileName') ra thì mới dùng được.
+            Xài theo syntax đối tượng 
+                +variableNames.properties.
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+Cách để thêm nhiều đối tượng vào module.exports {}
+
+Tạo 1 đối tượng trong file js, thay vì khai báo bằng const/let/var thì hãy khai báo trực tiếp bằng:
+                                                module.exports.variableNames = {
+                                                    thuộc tính: giá trị
+                                                }
+                                            Hoặc
+                                                const/let/var variableNames={
+                                                    properties: value,
+                                                }
+                                            module.exports.anotherVariableName = variableNames
+-------------------------------------------------------------------------------------------------------------------------
+Ngày thứ 3 học node js:
+Module fs ----> Module đọc ghi file trong node js 
+
+const {readFileSync, writeFileSync} require('fs')
+
+2 thằng này làm nhiệm vụ đọc file và ghi file. Tụi nó sử dụng các hàm hỗ trợ theo tụi nó, khá giống với thư viện
+
+Module path ===> module cho phép show hoặc đưa đường dẫn đến nơi hiện tại
+
+const {path} require ('path')
+
+thằng này làm nhiệm vụ show thông tin chi tiết đường dẫn mà mình muốn.
+-------------------------------------------------------------------------------------------------------------------------
+                                SYNC ================== ASYNC
+    Sự khác biết của 2 thằng này đều nằm ở việc cách xử lý vấn đề của nó.
+    SYNC thì xử lý thuần từ trên xuống dưới. Cái này đang chạy thì phải chạy xong rồi mới chạy cái tiếp theo.
+    
+    ASYNC thì xử lý nhanh hơn, hàm nào đang chạy mất thời gian thì kệ con mẹ nó, nó đi chạy thằng khác, mỗi thằng chạy mỗi phần
+    đếch quan tâm làm gì cho mệt
+        ==> Bất đồng bộ và Đồng bộ  
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Http module: Là module để khởi tạo server phía back-end. Có chứa rất nhiều object trong req.
+
+khi tạo server thì cần phải tạo const hằng số = http.createServer( (param trả về, ....)=> { code hoạt động chính nằm ở đây 
+                                                                        http.end() ~~ dùng để kết thúc quá trình gửi request, nếu 
+                                                                        trong quá trình kết thúc mà vẫn còn data thì sẽ bị gửi hết ra luồng chạy,
+                                                                        Nếu đang chạy mà có callBack() là nó hủy luồng chạy
+                                                                                        } )
+                
+                ()=> {} : Cái này lão john simlga gọi là rollback()
