@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
         res.end(`
         <h1>!Oops!</h1>
         <p>there no information for you || NOT FOUND || Không tìm thấy</p>
-        `,'utf8')
+        `,'utf8');
     }
 })
 

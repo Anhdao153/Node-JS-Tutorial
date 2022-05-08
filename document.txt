@@ -4,7 +4,7 @@ setTimeout(() => {
 
 SetInterval(()=>{
     console.log(`hello word`)
-}, 1000); // Sau 1000 mili giây thì nó sẽ thực hiện lại câu lệnh đó. Đến khi nào stop chương trình thì thôi
+}, 1000); // Sau 1000 mini giây thì nó sẽ thực hiện lại câu lệnh đó. Đến khi nào stop chương trình thì thôi
 
 #################################################
 // Việc thay thuộc tính kế thừa và thuộc tính bao đóng trong node JS cụ thể sẽ như sau.
@@ -64,3 +64,31 @@ khi tạo server thì cần phải tạo const hằng số = http.createServer( 
                                                                                         } )
                 
                 ()=> {} : Cái này lão john simlga gọi là rollback()
+-------------------------------------------------------------------------------------------------------------------------
+
+package.json là file lưu các cáu hình của project, các phiên bản để sau này cập nhập chỉ cần update nó lại thì tránh trường hợp bị lỗi code
+-------------------------------------------------------------------------------------------------------------------------
+
+Event Loop trong node js.
+ -- Mỗi một người dùng gửi dữ liệu đến| thực hiện request đến phía server thì được xem như là 1 event.
+ Các event Loop sẽ nhận các request rồi gửi xuống phía C++ thread pool.
+
+ Rồi các thread pool của c++ sẽ trả lại theo cơ thế của first in first out (QUEUE của JAVA) 
+ Mỗi event loop sẽ luôn đi kèm với hàm callBack() để khi nó thực hiện xong chức năng thì cái hàm call back này sẽ được gọi lại để thực hiện lần tiếp theo.
+-------------------------------------------------------------------------------------------------------------------------
+
+Luồng chạy đồng bộ và luồng chạy bất đồng bộ.
+Bản chất JS là chạy single thread. Cho nên nó sẽ xử lý từ trên xuống dưới (rất chậm).
+Cho nên nó đưa giải pháp đó là cho nó chạy bất đồng bộ. Nhưng mà bản chất đã là chạy đồng bộ rồi thì bây giờ nó có các xử lý bất đồng bộ khác
+
+Cách node JS xử bất đồng bộ
+- Khi bạn gọi 1 chức năng- Thì chức năng xử lý bằng cách truyền vào stack - stack sẽ xử lý hết cho đến khi stack trống.
+nhưng ở trên google thì sẽ có 1 bộ xử lý của google.
+
+Khi mà chạy các function thì phía browser sẽ nhận các function đó và gửi về phía queue,
+Nếu là sync thì khi nào mà browser hoàn thành toàn bộ các thread pool của nó và gửi toàn bộ xuống queue
+thì lúc này event loop mới hoạt động và gửi data này về main để xuất ra.
+
+Nếu là async thì sẽ khác: thread pool google xử lý thì gửi xuống và event loop sẽ xuất ra trong queue luôn. không đợi khi thread pool hết.
+
+* Lưu ý. tuyệt đối không được tạo một xử lý nào đó tại event loop khiến event loop chạy quá lâu.
