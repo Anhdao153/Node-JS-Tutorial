@@ -99,4 +99,40 @@ nameVariable( param nếu có).then( nếu như code thực hiện thành công 
 
 * Tóm tắt: Promise gần giống với try catch, dùng để thực hiện code bất đồng bộ và bắt lỗi tại lúc thực hiện và trả về 2 tham số
 
-* Ưu điểm hơn so với callBack  
+* Ưu điểm hơn so với callBack.
+
+-------------------------------------------------------------------------------------------------------------------------
+20220905: tổng kết lại cả ngày hôm nay
+
+Bắt đầu từ bài số 40.
+Tình trạng bắt đầu không hiểu nó đang làm cc gì xuất hiện.
+--
+Event emitter: Thằng này nằm trong module event
+
+Có chức năng là bắt sự kiện trong quá trình thực hiện của node js. Nó thể hiện được thông qua từ khoá event.on()
+Trong từ khoá on() có 1 eventName: string và callBack function
+Trong eventEmitter có nhiều hàm, có thể sử dụng. Cho phép chúng ta đặt tên điều kiện thông qua hàm on('tên đk', callBack)
+rồi qua đó sử dụng .emit() để gọi ra cái điều kiện đó. 
+Có một cái hay nữa, là các tham số trong hàm callBack sẽ thể hiện sự đa hình - nạp chồng cho các sự kiện cùng tên.
+-------------------------------------------------------------------------------------------------------------------------
+http cũng có sự kiện riêng của nó
+
+Sự kiện request. Khi mà server chạy, thì nếu như người dùng hoặc chúng ta tác động/truy cập vào site thì phía site sẽ đưa 
+về 1 event mặc định mang tên request. Vì vậy thằng server.on() nó sẽ bắt cái sự kiện đó
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Streams trong node js
+Một dạng collection của node js.
+streams thì không tồn tại cùng một thời điểm, cho nên streams khá là tốt cho bộ nhớ, rất hiệu quả khi làm việc với các file dữ liệu lớn, big data 
+Ngoài 4 cái sự kiện, thì còn 1 thằng nữa là on('open') thằng này sẽ chờ cho đến khi nào file đó mở được và bắt đầu đọc
+thì mới thực hiện các tác vụ tiếp theo
+
+.pipe() thằng này dùng để gửi dữ liệu được đọc từ trong cái file đó ra phía client
+
+-------------------------------------------------------------------------------------------------------------------------
+
+___EXPRESS JS___
+-------------------------------------------------------------------------------------------------------------------------
+Các phương thức HTTP get/post/patch/put/delete.
+*Lưu ý: 'khi khởi tạo 1 server trong node js thì bắt buộc cần ít nhất 1 câu lệnh res.end() thì lúc này phía server nó mới load được. Nếu như không thì phía serve vẫn sẽ nhận yêu cầu muốn vào website của mình nhưng nó sẽ ở trạng thái treo chứ không hề xuất ra 1 trang trắng như mình tưởng.'
