@@ -17,6 +17,6 @@ const server = http.createServer((req, res) => {
         <p>there no information for you || NOT FOUND || Không tìm thấy</p>
         `,'utf8');
     }
-})
+});
 
-server.listen(8080)
+server.listen(8080);

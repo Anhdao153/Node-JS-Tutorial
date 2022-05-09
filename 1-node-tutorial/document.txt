@@ -85,10 +85,18 @@ Cách node JS xử bất đồng bộ
 - Khi bạn gọi 1 chức năng- Thì chức năng xử lý bằng cách truyền vào stack - stack sẽ xử lý hết cho đến khi stack trống.
 nhưng ở trên google thì sẽ có 1 bộ xử lý của google.
 
-Khi mà chạy các function thì phía browser sẽ nhận các function đó và gửi về phía queue,
-Nếu là sync thì khi nào mà browser hoàn thành toàn bộ các thread pool của nó và gửi toàn bộ xuống queue
-thì lúc này event loop mới hoạt động và gửi data này về main để xuất ra.
-
-Nếu là async thì sẽ khác: thread pool google xử lý thì gửi xuống và event loop sẽ xuất ra trong queue luôn. không đợi khi thread pool hết.
+Khi mà chạy các function thì phía browser sẽ nhận các function đó và gửi về phía stack,
+web APIs browser sẽ tạo ra bộ đếm thời gian và xử lý xong thì gửi xuống queue luôn. Khi đó thì queue sẽ đưa về event loop và trả lại stack
 
 * Lưu ý. tuyệt đối không được tạo một xử lý nào đó tại event loop khiến event loop chạy quá lâu.
+
+-------------------------------------------------------------------------------------------------------------------------
+const nameVariable = new Promise ((resolve, reject) =>{
+    code thực hiện
+})
+
+nameVariable( param nếu có).then( nếu như code thực hiện thành công thì sẽ trả về đây).catch(nếu code có lỗi thì sẽ rơi vào catch)
+
+* Tóm tắt: Promise gần giống với try catch, dùng để thực hiện code bất đồng bộ và bắt lỗi tại lúc thực hiện và trả về 2 tham số
+
+* Ưu điểm hơn so với callBack  
