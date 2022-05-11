@@ -136,3 +136,38 @@ ___EXPRESS JS___
 -------------------------------------------------------------------------------------------------------------------------
 Các phương thức HTTP get/post/patch/put/delete.
 *Lưu ý: 'khi khởi tạo 1 server trong node js thì bắt buộc cần ít nhất 1 câu lệnh res.end() thì lúc này phía server nó mới load được. Nếu như không thì phía serve vẫn sẽ nhận yêu cầu muốn vào website của mình nhưng nó sẽ ở trạng thái treo chứ không hề xuất ra 1 trang trắng như mình tưởng.'
+
+-------------------------------------------------------------------------------------------------------------------------
+Các api cơ bản của thằng express js.
+Nói chung cũng không có gì cao siêu cả, làm quen với mấy thằng app.get/put/post/patch
+
+tiếp đến là việc sử dụng tham số, có sự khác lạ đối chút so với thằng java đó là mình đéo khai báo kiểu dữ liệu cho tham số
+
+Thằng quần què js này nó tự hiểu luôn
+mọi việc chúng ta cần làm| app.get('/api/abc/:nameParam')
+:nameParam khi được nhập trên website nó sẽ tự động hiểu luôn
+<=> :nameParam = {'cái đéo gì đó bạn nhập trên web'}
+nhưng để tiện cho việc sử dụng hoặc điều kiện hóa cái nameParam đó
+thì cần phải khai báo nó (dĩ nhiên rồi, đéo khai báo mà đòi dùng thì có cc nhé)
+cú pháp =>   const {:nameParam} = req.param ~~~~~ Thấy ngôn ngữ này có nứng l k cơ chứ :))
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Thứ gọi là middleware: Nghe fancy vãi cả buồi nhưng thực ra đó là service đó :> 
+Vâng~ service của java, tên nghe technology vãi cả bìu nhưng hóa ra là bình mới rượu cũ
+
+vì cơ bản nó là service nên đéo cần phải giải thích thêm.
+
+Cơ mà thay vì lúc trước xài @controller, @requestMapping("/api/v1")
+Thì thằng này xử dụng 1 thứ khác.
+const logger = require('./một cái file nào đó mà m viết ở một thư mục nào đó) .         ------> là thứ chó này nè :)))
+app.use('đây là cái chỗ điều kiện, để cho thằng use này nó hiểu nó sẽ chạy khi nào', tên của cái mày mới khai báo)
+
+thứ củ lìn này sẽ chạy nếu như cái request của m, có chứa cái đoạn điều kiện đó
+
+ví dụ như url = https://tênmiền/api/user/cái quần què gì đó
+
+app.use('user', thêm mới nhân vật)
+
+Vì url có chữ user nên nó làm cho con dog app.use chạy
+bất ngờ chưa, bất ngờ vl
