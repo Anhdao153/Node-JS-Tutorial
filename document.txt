@@ -171,3 +171,26 @@ app.use('user', thêm mới nhân vật)
 
 Vì url có chữ user nên nó làm cho con dog app.use chạy
 bất ngờ chưa, bất ngờ vl
+-------------------------------------------------------------------------------------------------------------------------
+
+Tóm tắt lại sau khi hoàn thành khoá express tutorial.
+
+Khi sử dụng express thì gần như là bản syntax thu gọn của js trong node js
+
+flow của express js cũng rất đơn giản
+
+user gửi 1 request xuống phía dưới server. Sau đó thì routes sẽ xử lý các request đó.
+1-Request: User gửi request xuống.
+2-middleware: Đây giống như là phần service trong spring, được xử dụng để lọc các request, validate, bắt các exception.
+3-response: Sau khi các middleware đã xử lý hết các request không đúng quy định. Thì chỉ còn các request được chấp nhận và phía server sẽ trả lại các kết quả/phản hồi mà request hoặc chức năng đó yêu cầu.
+....
+Cách phân chia bố cục và hầu hết là theo mô hình MVC
+
+đầu tiên là file app.js. Đây sẽ là file chạy toàn bộ dự án tương tương main()
+Tiếp theo sẽ là các controller.
+Tạo các controller rồi trả cho thằng routes để nó gọi, 
+Dưới controller thì gọi tiếp middleware để nó xử lý và phía database để nó trả vè những gì nó muốn.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Viết API task manager với front-end lấy từ git hub của lão john về
