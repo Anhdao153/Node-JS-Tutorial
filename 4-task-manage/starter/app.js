@@ -11,13 +11,10 @@ const port = 1234;
 
 // middleware
 app.use(express.json());
-
+app.use(express.static('./public'));
 
 // router
-app.get('/',(req,res)=>{
-    res.write('Hello World');
-    res.end();
-});
+
 
 app.use('/api/v1/tasks',tasks);
 
