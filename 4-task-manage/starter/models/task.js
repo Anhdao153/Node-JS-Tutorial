@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 const TaskSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: [true,'đéo được để trống'],
+        required: [true,'đéo được để trống'],
         trim: true,
         maxlength: [20,'không được lớn hơn 20 ký tự'],
         unique: true,
+        notNull: true,
     },
     completed: {
         type: Boolean,
